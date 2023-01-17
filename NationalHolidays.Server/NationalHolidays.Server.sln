@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NationalHolidays.API", "NationalHolidays.API\NationalHolidays.API.csproj", "{5E15C260-9296-4660-AA6C-4A09FA237E46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NationalHolidays.API", "NationalHolidays.API\NationalHolidays.API.csproj", "{5E15C260-9296-4660-AA6C-4A09FA237E46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NationalHolidays.Application", "NationalHolidays.Application\NationalHolidays.Application.csproj", "{A39E6586-9F4A-47FA-95FE-57CEB40F53BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NationalHolidays.Application", "NationalHolidays.Application\NationalHolidays.Application.csproj", "{A39E6586-9F4A-47FA-95FE-57CEB40F53BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NationalHolidays.Domain", "NationalHolidays.Domain\NationalHolidays.Domain.csproj", "{22CB07E3-4469-4BB0-8BFB-606041539364}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NationalHolidays.Domain", "NationalHolidays.Domain\NationalHolidays.Domain.csproj", "{22CB07E3-4469-4BB0-8BFB-606041539364}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NationalHolidays.Infrastructure.Data", "NationalHolidays.Infrastructure.Data\NationalHolidays.Infrastructure.Data.csproj", "{E04F0BC2-A30D-4CAF-BF68-F14032FA5A9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NationalHolidays.Infrastructure.Data", "NationalHolidays.Infrastructure.Data\NationalHolidays.Infrastructure.Data.csproj", "{E04F0BC2-A30D-4CAF-BF68-F14032FA5A9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NationalHolidays.Infrastructure.ExternalService", "NationalHolidays.Infrastructure.CrossCutting.Operations\NationalHolidays.Infrastructure.ExternalService.csproj", "{D896D8B0-487A-4F0F-9F3C-CD4C8D9F45CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E04F0BC2-A30D-4CAF-BF68-F14032FA5A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E04F0BC2-A30D-4CAF-BF68-F14032FA5A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E04F0BC2-A30D-4CAF-BF68-F14032FA5A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D896D8B0-487A-4F0F-9F3C-CD4C8D9F45CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D896D8B0-487A-4F0F-9F3C-CD4C8D9F45CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D896D8B0-487A-4F0F-9F3C-CD4C8D9F45CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D896D8B0-487A-4F0F-9F3C-CD4C8D9F45CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

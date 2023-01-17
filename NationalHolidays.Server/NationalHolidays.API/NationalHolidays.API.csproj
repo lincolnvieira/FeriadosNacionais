@@ -8,10 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\NationalHolidays.Application\NationalHolidays.Application.csproj" />
+    <ProjectReference Include="..\NationalHolidays.Domain\NationalHolidays.Domain.csproj" />
+    <ProjectReference Include="..\NationalHolidays.Infrastructure.CrossCutting.Operations\NationalHolidays.Infrastructure.ExternalService.csproj" />
+    <ProjectReference Include="..\NationalHolidays.Infrastructure.Data\NationalHolidays.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>
