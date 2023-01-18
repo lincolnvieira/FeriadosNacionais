@@ -10,6 +10,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Dapper.SqlMapper;
 
 namespace Holidays.Infrastructure.Data.Repositories
 {
@@ -23,7 +24,17 @@ namespace Holidays.Infrastructure.Data.Repositories
 
         public async Task Add(NationalHoliday nationalHoliday)
         {
-            await DapperConnection.ExecuteAsync("SP_ADD_NationalHoliday", nationalHoliday, commandType: CommandType.StoredProcedure);
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+            dynamicParameters.Add("@Date", nationalHoliday.Date);
+            dynamicParameters.Add("@Title", nationalHoliday.Title);
+            dynamicParameters.Add("@Description", nationalHoliday.Description);
+            dynamicParameters.Add("@Legislation", nationalHoliday.Legislation);
+            dynamicParameters.Add("@Type", nationalHoliday.Type);
+            dynamicParameters.Add("@StartTime", nationalHoliday.StartTime);
+            dynamicParameters.Add("@EndTime", nationalHoliday.EndTime);
+
+            await DapperConnection.ExecuteAsync("SP_ADD_NationalHoliday", dynamicParameters, commandType: CommandType.StoredProcedure);
         }
 
         public async Task<NationalHoliday> GetById(int nationalHolidayId)
@@ -50,9 +61,13 @@ namespace Holidays.Infrastructure.Data.Repositories
             await DapperConnection.ExecuteAsync("SP_UPD_NationalHoliday", dynamicParameters, commandType: CommandType.StoredProcedure);
         }
 
-        public Task Delete(int natinalHolidayId)
+        public async Task Delete(int nationalHolidayId)
         {
-            throw new NotImplementedException();
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+            dynamicParameters.Add("@NationalHolidayId", nationalHolidayId);
+
+            await DapperConnection.ExecuteAsync("SP_DEL_NationalHolidayById", dynamicParameters, commandType: CommandType.StoredProcedure);
         }
 
         public async Task DeleteAll()

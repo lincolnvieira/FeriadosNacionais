@@ -10,9 +10,10 @@ namespace Holidays.Application.Interfaces
 {
     public interface INationalHolidayService
     {
-        Task<List<GetNationalHolidaysResponse>> GetAllNationalHoliday();
         Task<GetNationalHolidaysResponse> GetNationalHolidayById(int nationalHolidayId);
-        Task ResetOriginalDataHolidays();
+        Task<List<GetNationalHolidaysResponse>> GetAllNationalHoliday();
         Task UpdateNationalHoliday(UpdateNationalHolidayRequest updateNationalHolidayRequest);
+        Task DeleteNationalHoliday(int nationalHolidayId);
+        Task ResetOriginalDataHolidays();
     }
 }

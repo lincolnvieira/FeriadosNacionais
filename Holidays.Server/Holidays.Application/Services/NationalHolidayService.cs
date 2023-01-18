@@ -56,6 +56,11 @@ namespace Holidays.Application.Services
             await _nationalHolidayRepository.Update(nationalHoliday);
         }
 
+        public async Task DeleteNationalHoliday(int nationalHolidayId)
+        {
+            await _nationalHolidayRepository.Delete(nationalHolidayId);
+        }
+
         public async Task ResetOriginalDataHolidays()
         {
             List<NationalHolidayExternal> lstNationalHolidayExternal = await _nationalHolidayExternalService.GetNationalHolidaysFromExternalAPI();

@@ -4,6 +4,7 @@ using Holidays.Application.DTOs.Response;
 using Holidays.Application.Interfaces;
 using Holidays.Infrastructure.ExternalService.Interfaces;
 using Holidays.Application.DTOs.Request;
+using Holidays.Domain.Models;
 
 namespace Holidays.API.Controllers
 {
@@ -24,20 +25,6 @@ namespace Holidays.API.Controllers
 
         #region Public Methods
         [HttpGet]
-        [Route("GetAllNationalHoliday")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<List<GetNationalHolidaysResponse>>> GetAllNationalHoliday()
-        {
-            List<GetNationalHolidaysResponse> lstGetNationalHolidaysResponse = await _nationalHolidayService.GetAllNationalHoliday();
-
-            if (lstGetNationalHolidaysResponse.Count == 0)
-                return NoContent();
-
-            return Ok(lstGetNationalHolidaysResponse);
-        }
-
-        [HttpGet]
         [Route("GetNationalHoliday/{nationalHolidayId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -49,6 +36,20 @@ namespace Holidays.API.Controllers
                 return NoContent();
 
             return Ok(getNationalHolidaysResponse);
+        }
+
+        [HttpGet]
+        [Route("GetAllNationalHoliday")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult<List<GetNationalHolidaysResponse>>> GetAllNationalHoliday()
+        {
+            List<GetNationalHolidaysResponse> lstGetNationalHolidaysResponse = await _nationalHolidayService.GetAllNationalHoliday();
+
+            if (lstGetNationalHolidaysResponse.Count == 0)
+                return NoContent();
+
+            return Ok(lstGetNationalHolidaysResponse);
         }
 
         [HttpPost]
@@ -63,11 +64,22 @@ namespace Holidays.API.Controllers
             return Ok();
         }
 
+        [HttpDelete]
+        [Route("DeleteNationalHoliday/{nationalHolidayId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> DeleteNationalHoliday(int nationalHolidayId)
+        {
+            await _nationalHolidayService.DeleteNationalHoliday(nationalHolidayId);
+
+            return Ok();
+        }
+
         [HttpPost]
         [Route("ResetOriginalDataHolidays")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> ResetOriginalDataHolidays()
         {
             await _nationalHolidayService.ResetOriginalDataHolidays();
