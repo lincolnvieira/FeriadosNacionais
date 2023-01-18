@@ -14,8 +14,7 @@ namespace NationalHolidays.API.Configurations
         public static void AddDependencyInjectionConfiguration(this IServiceCollection services)
         {
             services.AddScoped<INationalHolidayService, NationalHolidayService>();
-            //services.AddScoped<INationalHolidayRepository, NationalHolidayRepository>();
-
+            services.AddScoped<INationalHolidayRepository, NationalHolidayRepository>();
             services.AddScoped<INationalHolidayExternalService, NationalHolidayExternalService>();
         }
     }

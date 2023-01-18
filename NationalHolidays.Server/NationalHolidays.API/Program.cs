@@ -1,4 +1,5 @@
 using NationalHolidays.API.Configurations;
+using NationalHolidays.Application.Mapper;
 using NationalHolidays.Infrastructure.Data.Options;
 using NationalHolidays.Infrastructure.ExternalService.Options;
 using System.Configuration;
@@ -13,6 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDependencyInjectionConfiguration();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration));
 
 // ConnectionString
 builder.Services.Configure<ConnectionStringOptions>(
