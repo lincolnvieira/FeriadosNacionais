@@ -9,13 +9,22 @@ import { NationalHoliday } from './models/national-holiday';
 })
 export class NationalHolidayService {
 
+  baseUrl = "https://localhost:44346/api/NationalHoliday/";
+
   constructor(private httpClient: HttpClient) { }
 
   getAllNationalHolidays(): Observable<NationalHoliday[]>  {
-    return this.httpClient.get<NationalHoliday[]>("https://localhost:44346/api/NationalHoliday/GetAllNationalHoliday")
+    return this.httpClient.get<NationalHoliday[]>(this.baseUrl + "GetAllNationalHoliday")
     .pipe(
       catchError(this.handleError)
-    );;
+    );
+  }
+
+  getNationalHoliday(id: number): Observable<NationalHoliday>  {
+    return this.httpClient.get<NationalHoliday>(this.baseUrl + "GetNationalHoliday/" + id)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
 

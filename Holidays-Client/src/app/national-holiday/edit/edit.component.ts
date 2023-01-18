@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NationalHoliday } from '../models/national-holiday';
+import { NationalHolidayService } from '../national-holiday.service';
 
 @Component({
   selector: 'app-edit',
@@ -8,15 +11,43 @@ import { ActivatedRoute } from '@angular/router';
 
 export class EditComponent implements OnInit {
   id: number;
+  public nationalHoliday : NationalHoliday;
 
-  constructor(private route: ActivatedRoute) {}
+  editNationalHolidayFormGroup: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private nationalHolidayService: NationalHolidayService) {}
   
   ngOnInit(): void {
+    this.editNationalHolidayFormGroup = this.formBuilder.group({
+      title: [''],
+      date: [''],
+      description: [''],
+      legislation: [''],
+      type: [''],
+      startTime: [''],
+      endTime: ['']
+    });
+
     this.route.params.subscribe(params => {
-      this.id = +params['id'];
+      this.id = params['id'];
    });
 
-   console.log(this.id);
+    this.nationalHolidayService.getNationalHoliday(this.id)
+      .subscribe((response) => {
+        this.fillForm(response);   
+      }
+    ); 
   }
-  
+
+  fillForm(response: NationalHoliday){
+    this.editNationalHolidayFormGroup.patchValue({
+      date: response.date,
+      title: response.title,
+      description: response.description,
+      legislation: response.legislation,
+      type: response.type,
+      startTime : response.startTime,
+      endTime : response.endTime
+    });
+  }
 }

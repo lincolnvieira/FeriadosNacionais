@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.nationalHolidayService.getAllNationalHolidays()
       .subscribe(
-        nationalHoliday => this.nationalHolidays = nationalHoliday
+        response => this.nationalHolidays = response
       );
   }
 }

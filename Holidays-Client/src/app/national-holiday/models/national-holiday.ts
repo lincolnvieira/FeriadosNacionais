@@ -1,6 +1,10 @@
 export interface NationalHoliday {
     nationalHolidayId: string;
+    date: string;
     title: string;
     description: string;
-    date: string;
+    legislation: string;
+    type: string;
+    startTime : string;
+    endTime : string;
 }
