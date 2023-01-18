@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Holidays.Application.DTOs.Response;
 using Holidays.Application.Interfaces;
 using Holidays.Infrastructure.ExternalService.Interfaces;
+using Holidays.Application.DTOs.Request;
 
 namespace Holidays.API.Controllers
 {
@@ -48,6 +49,18 @@ namespace Holidays.API.Controllers
                 return NoContent();
 
             return Ok(getNationalHolidaysResponse);
+        }
+
+        [HttpPost]
+        [Route("UpdateNationalHoliday")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> UpdateNationalHoliday([FromBody] UpdateNationalHolidayRequest updateNationalHolidayRequest)
+        {
+            await _nationalHolidayService.UpdateNationalHoliday(updateNationalHolidayRequest);
+
+            return Ok();
         }
 
         [HttpPost]

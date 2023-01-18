@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Holidays.Application.DTOs.Request;
 using Holidays.Application.DTOs.Response;
 using Holidays.Application.Interfaces;
 using Holidays.Domain.Interfaces;
@@ -48,6 +49,12 @@ namespace Holidays.Application.Services
 
             return lstGetNationalHolidaysResponse;
         }
+        public async Task UpdateNationalHoliday(UpdateNationalHolidayRequest updateNationalHolidayRequest)
+        {
+            NationalHoliday nationalHoliday = _mapper.Map<NationalHoliday>(updateNationalHolidayRequest);
+
+            await _nationalHolidayRepository.Update(nationalHoliday);
+        }
 
         public async Task ResetOriginalDataHolidays()
         {
@@ -68,7 +75,7 @@ namespace Holidays.Application.Services
             {
                 await _nationalHolidayRepository.Add(item);
             }
-        } 
+        }
         #endregion
     }
 }

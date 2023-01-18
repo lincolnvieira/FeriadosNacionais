@@ -1,4 +1,5 @@
-﻿using Holidays.Application.DTOs.Response;
+﻿using Holidays.Application.DTOs.Request;
+using Holidays.Application.DTOs.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace Holidays.Application.Interfaces
         Task<List<GetNationalHolidaysResponse>> GetAllNationalHoliday();
         Task<GetNationalHolidaysResponse> GetNationalHolidayById(int nationalHolidayId);
         Task ResetOriginalDataHolidays();
+        Task UpdateNationalHoliday(UpdateNationalHolidayRequest updateNationalHolidayRequest);
     }
 }

@@ -12,7 +12,7 @@ namespace Holidays.Domain.Interfaces
         Task Add(NationalHoliday nationalHoliday);
         Task<NationalHoliday> GetById(int nationalHolidayId);
         Task<List<NationalHoliday>> GetAll();
-        Task Update(int natinalHolidayId);
+        Task Update(NationalHoliday NationalHoliday);
         Task Delete(int natinalHolidayId);
         Task DeleteAll();
     }

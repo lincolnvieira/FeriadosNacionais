@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Holidays.Application.DTOs.Request;
 using Holidays.Application.DTOs.Response;
 using Holidays.Domain.Models;
 using Holidays.Infrastructure.ExternalService.Models;
@@ -14,6 +15,9 @@ namespace Holidays.Application.Mapper
     {
         public AutoMapperConfiguration()
         {
+            // Requests
+            CreateMap<NationalHoliday, UpdateNationalHolidayRequest>().ReverseMap();
+
             // Responses
             CreateMap<NationalHoliday, GetNationalHolidaysResponse>().ReverseMap();
 
