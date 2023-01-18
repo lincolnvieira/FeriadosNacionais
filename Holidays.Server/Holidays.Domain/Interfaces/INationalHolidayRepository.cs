@@ -10,7 +10,7 @@ namespace Holidays.Domain.Interfaces
     public interface INationalHolidayRepository
     {
         Task Add(NationalHoliday nationalHoliday);
-        Task<NationalHoliday> Get();
+        Task<NationalHoliday> GetById(int nationalHolidayId);
         Task<List<NationalHoliday>> GetAll();
         Task Update(int natinalHolidayId);
         Task Delete(int natinalHolidayId);

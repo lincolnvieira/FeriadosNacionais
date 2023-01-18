@@ -8,6 +8,7 @@ namespace Holidays.Domain.Models
 {
     public class NationalHoliday
     {
+        public int NationalHolidayId { get; set; }
         public string Date { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

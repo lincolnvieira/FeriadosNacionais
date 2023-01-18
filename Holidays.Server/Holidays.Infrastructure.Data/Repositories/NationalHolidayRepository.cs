@@ -26,16 +26,18 @@ namespace Holidays.Infrastructure.Data.Repositories
             await DapperConnection.ExecuteAsync("SP_ADD_NationalHoliday", nationalHoliday, commandType: CommandType.StoredProcedure);
         }
 
-        public Task<NationalHoliday> Get()
+        public async Task<NationalHoliday> GetById(int nationalHolidayId)
         {
-            throw new NotImplementedException();
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+            dynamicParameters.Add("@NationalHolidayId", nationalHolidayId);
+
+            return await DapperConnection.QueryFirstOrDefaultAsync<NationalHoliday>("SP_GET_NationalHolidayById", dynamicParameters, commandType: CommandType.StoredProcedure);
         }
 
         public async Task<List<NationalHoliday>> GetAll()
         {
-            IEnumerable<NationalHoliday> values = await DapperConnection.QueryAsync<NationalHoliday>("SP_LST_NationalHolidays", commandType: CommandType.StoredProcedure);
-
-            return values.ToList();
+            return (await DapperConnection.QueryAsync<NationalHoliday>("SP_LST_NationalHolidays", commandType: CommandType.StoredProcedure)).ToList();
         }
 
         public Task Update(int natinalHolidayId)

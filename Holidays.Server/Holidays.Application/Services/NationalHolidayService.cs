@@ -31,6 +31,15 @@ namespace Holidays.Application.Services
         #endregion
 
         #region Public Methods
+        public async Task<GetNationalHolidaysResponse> GetNationalHolidayById(int nationalHolidayId)
+        {
+            NationalHoliday nationalHoliday = await _nationalHolidayRepository.GetById(nationalHolidayId);
+
+            GetNationalHolidaysResponse getNationalHolidaysResponse = _mapper.Map<GetNationalHolidaysResponse>(nationalHoliday);
+
+            return getNationalHolidaysResponse;
+        }
+
         public async Task<List<GetNationalHolidaysResponse>> GetAllNationalHoliday()
         {
             List<NationalHoliday> lstNationalHoliday = await _nationalHolidayRepository.GetAll();

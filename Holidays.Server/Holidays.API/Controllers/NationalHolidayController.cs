@@ -10,13 +10,18 @@ namespace Holidays.API.Controllers
     [ApiController]
     public class NationalHolidayController : ControllerBase
     {
+        #region Declarations
         private readonly INationalHolidayService _nationalHolidayService;
+        #endregion
 
+        #region Constructor
         public NationalHolidayController(INationalHolidayService nationalHolidayService)
         {
             _nationalHolidayService = nationalHolidayService;
         }
+        #endregion
 
+        #region Public Methods
         [HttpGet]
         [Route("GetAllNationalHoliday")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -31,6 +36,20 @@ namespace Holidays.API.Controllers
             return Ok(lstGetNationalHolidaysResponse);
         }
 
+        [HttpGet]
+        [Route("GetNationalHoliday/{nationalHolidayId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult<GetNationalHolidaysResponse>> GetNationalHoliday(int nationalHolidayId)
+        {
+            GetNationalHolidaysResponse getNationalHolidaysResponse = await _nationalHolidayService.GetNationalHolidayById(nationalHolidayId);
+
+            if (getNationalHolidaysResponse == null)
+                return NoContent();
+
+            return Ok(getNationalHolidaysResponse);
+        }
+
         [HttpPost]
         [Route("ResetOriginalDataHolidays")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -41,6 +60,7 @@ namespace Holidays.API.Controllers
             await _nationalHolidayService.ResetOriginalDataHolidays();
 
             return Ok();
-        }
+        } 
+        #endregion
     }
 }
