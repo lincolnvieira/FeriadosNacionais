@@ -17,6 +17,20 @@ namespace Holidays.API.Controllers
             _nationalHolidayService = nationalHolidayService;
         }
 
+        [HttpGet]
+        [Route("GetAllNationalHoliday")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult<List<GetNationalHolidaysResponse>>> GetAllNationalHoliday()
+        {
+            List<GetNationalHolidaysResponse> lstGetNationalHolidaysResponse = await _nationalHolidayService.GetAllNationalHoliday();
+
+            if (lstGetNationalHolidaysResponse.Count == 0)
+                return NoContent();
+
+            return Ok(lstGetNationalHolidaysResponse);
+        }
+
         [HttpPost]
         [Route("ResetOriginalDataHolidays")]
         [ProducesResponseType(StatusCodes.Status200OK)]

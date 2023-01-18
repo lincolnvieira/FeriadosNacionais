@@ -31,9 +31,11 @@ namespace Holidays.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<List<NationalHoliday>> List()
+        public async Task<List<NationalHoliday>> GetAll()
         {
-            throw new NotImplementedException();
+            IEnumerable<NationalHoliday> values = await DapperConnection.QueryAsync<NationalHoliday>("SP_LST_NationalHolidays", commandType: CommandType.StoredProcedure);
+
+            return values.ToList();
         }
 
         public Task Update(int natinalHolidayId)

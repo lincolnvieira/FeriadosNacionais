@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Holidays.Application.DTOs.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Holidays.Application.Interfaces
 {
     public interface INationalHolidayService
     {
+        Task<List<GetNationalHolidaysResponse>> GetAllNationalHoliday();
         Task ResetOriginalDataHolidays();
     }
 }

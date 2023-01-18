@@ -11,7 +11,7 @@ namespace Holidays.Domain.Interfaces
     {
         Task Add(NationalHoliday nationalHoliday);
         Task<NationalHoliday> Get();
-        Task<List<NationalHoliday>> List();
+        Task<List<NationalHoliday>> GetAll();
         Task Update(int natinalHolidayId);
         Task Delete(int natinalHolidayId);
         Task DeleteAll();
