@@ -2,29 +2,31 @@
 
     <h1>Lista de Feriados Nacionais</h1>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
+                <th>Data</th>
                 <th>Titulo</th>
-                <th>Descrição</th>
                 <th></th>
             </tr>
         </thead>
-        <tr *ngFor="let nationalHoliday of nationalHolidays">
-            <td>
-                {{ nationalHoliday.title }}
-            </td>
-            <td>
-                {{ nationalHoliday.description }}
-            </td>
-            <td class="text-right">
-                <a class="btn btn-warning" [routerLink]="['/edit', nationalHoliday.nationalHolidayId]">
-                    <span class="fa fa-pencil-alt"></span>
-                </a>&nbsp;
-                <a class="btn btn-danger">
-                    <span class="fa fa-trash"></span>
-                </a>
-            </td>
-        </tr>
+        <tbody>
+            <tr *ngFor="let nationalHoliday of nationalHolidays">
+                <td>
+                    {{ nationalHoliday.date }}
+                </td>
+                <td>
+                    {{ nationalHoliday.title }}
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-warning" [routerLink]="['/edit', nationalHoliday.nationalHolidayId]">
+                        <span class="fa fa-pencil-alt"></span>
+                    </a>&nbsp;
+                    <a class="btn btn-danger">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>

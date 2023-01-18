@@ -1,1 +1,59 @@
-<p>edit works!</p>
+<div class="container main-container">
+
+    <h3>Editar Feriado Nacional</h3>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form>
+                <div class="form-group">
+                    <label class="control-label">Data</label>
+                    <div>
+                        <input class="form-control" id="date" type="text" formControlName="date" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Titulo</label>
+                    <div>
+                        <input class="form-control" id="title" type="text" formControlName="title" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Descrição</label>
+                    <div>
+                        <input class="form-control" id="description" type="text" formControlName="description" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Legislação</label>
+                    <div>
+                        <input class="form-control" id="legislation" type="text" formControlName="legislation" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tipo</label>
+                    <div>
+                        <input class="form-control" id="type" type="text" formControlName="type" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Hora de Inicio</label>
+                    <div>
+                        <input class="form-control" id="startTime" type="text" formControlName="startTime" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Hora de Término</label>
+                    <div>
+                        <input class="form-control" id="endTime" type="text" formControlName="endTime" readonly />
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <a class="btn btn-outline-secondary" href="/list">Voltar</a>&nbsp;
+                    <input type="submit" value="Editar" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
