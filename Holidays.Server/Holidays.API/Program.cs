@@ -17,6 +17,16 @@ builder.Services.AddDependencyInjectionConfiguration();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration));
 
+builder.Services.AddCors(
+    options => options.AddPolicy(
+        name: "Development",
+        policy =>
+        {
+            policy.AllowAnyHeader();
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+        }));
+
 // ConnectionString
 builder.Services.Configure<ConnectionStringOptions>(
     builder.Configuration.GetSection(ConnectionStringOptions.ConnectionString));
@@ -32,6 +42,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("Development");
 }
 
 app.UseHttpsRedirection();
