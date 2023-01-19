@@ -7,6 +7,7 @@
             <tr>
                 <th>Data</th>
                 <th>Titulo</th>
+                <th>Descrição</th>
                 <th></th>
             </tr>
         </thead>
@@ -15,8 +16,11 @@
                 <td>
                     {{ nationalHoliday.date }}
                 </td>
-                <td>
+                <td >
                     {{ nationalHoliday.title }}
+                </td>
+                <td style="width: 50%">
+                    {{ nationalHoliday.description }}
                 </td>
                 <td class="text-right">
                     <a class="btn btn-warning" [routerLink]="['/edit', nationalHoliday.nationalHolidayId]">
