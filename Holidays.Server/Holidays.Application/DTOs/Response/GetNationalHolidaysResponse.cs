@@ -13,9 +13,8 @@ namespace Holidays.Application.DTOs.Response
         public string Title { get; set; }
         public string Description { get; set; }
         public string Legislation { get; set; }
-        public string Type { get; set; } // "feriado",
+        public string Type { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
-        //public VariableDates variableDates { get; set; }
     }
 }
