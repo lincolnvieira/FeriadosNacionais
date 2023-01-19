@@ -5,7 +5,7 @@
     <hr>
     <div class="row">
         <div class="col-md-10">
-            <form [formGroup]="editNationalHolidayFormGroup">
+            <form [formGroup]="editNationalHolidayFormGroup" (ngSubmit)="updateNationalHoliday()">
                 <div class="form-group">
                     <label class="control-label">Data</label>
                     <div>

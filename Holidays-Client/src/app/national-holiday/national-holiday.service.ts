@@ -27,6 +27,12 @@ export class NationalHolidayService {
     );
   }
 
+  updateNationalHoliday(nationalHoliday: NationalHoliday){
+    return this.httpClient.post(this.baseUrl + "UpdateNationalHoliday", nationalHoliday)
+      .pipe(
+        catchError(this.handleError)
+      );
+  };
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
