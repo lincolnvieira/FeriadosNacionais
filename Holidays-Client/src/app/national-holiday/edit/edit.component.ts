@@ -64,7 +64,7 @@ export class EditComponent implements OnInit {
       .subscribe({
         next: () => { this.processSuccess() },
         error: () => { this.processError() }
-  });
+      });
   }
 
   processSuccess() {

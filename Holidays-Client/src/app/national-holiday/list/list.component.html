@@ -22,11 +22,13 @@
                     <a class="btn btn-warning" [routerLink]="['/edit', nationalHoliday.nationalHolidayId]">
                         <span class="fa fa-pencil-alt"></span>
                     </a>&nbsp;
-                    <a class="btn btn-danger">
+                    <a class="btn btn-danger" (click)="deleteItem(nationalHoliday.nationalHolidayId)">
                         <span class="fa fa-trash"></span>
                     </a>
                 </td>
             </tr>
         </tbody>
     </table>
+    <br>
+    <input type="button" value="Resetar Dados Originais" class="btn btn-primary" (click)="resetList()">
 </div>

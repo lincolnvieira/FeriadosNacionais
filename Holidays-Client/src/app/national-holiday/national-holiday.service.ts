@@ -34,6 +34,20 @@ export class NationalHolidayService {
       );
   };
 
+  deleteNationalHoliday(id: string){
+    return this.httpClient.delete(this.baseUrl + "DeleteNationalHoliday/" + id)
+      .pipe(
+        catchError(this.handleError)
+      );
+  };
+
+  resetNationalHoliday(){
+    return this.httpClient.post(this.baseUrl + "ResetOriginalDataHolidays", null)
+      .pipe(
+        catchError(this.handleError)
+      );
+  };
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
