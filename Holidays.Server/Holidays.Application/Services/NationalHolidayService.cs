@@ -65,11 +65,14 @@ namespace Holidays.Application.Services
         {
             List<NationalHolidayExternal> lstNationalHolidayExternal = await _nationalHolidayExternalService.GetNationalHolidaysFromExternalAPI();
 
-            List<NationalHoliday> lstNationalHolidays = _mapper.Map<List<NationalHoliday>>(lstNationalHolidayExternal);
+            if (lstNationalHolidayExternal.Count > 0)
+            {
+                List<NationalHoliday> lstNationalHolidays = _mapper.Map<List<NationalHoliday>>(lstNationalHolidayExternal);
 
-            await _nationalHolidayRepository.DeleteAll();
+                await _nationalHolidayRepository.DeleteAll();
 
-            await AddNationalHolidays(lstNationalHolidays);
+                await AddNationalHolidays(lstNationalHolidays); 
+            }
         }
         #endregion
 

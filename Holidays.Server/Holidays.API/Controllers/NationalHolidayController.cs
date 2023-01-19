@@ -28,64 +28,101 @@ namespace Holidays.API.Controllers
         [Route("GetNationalHoliday/{nationalHolidayId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<GetNationalHolidaysResponse>> GetNationalHoliday(int nationalHolidayId)
         {
-            GetNationalHolidaysResponse getNationalHolidaysResponse = await _nationalHolidayService.GetNationalHolidayById(nationalHolidayId);
+            try
+            {
+                GetNationalHolidaysResponse getNationalHolidaysResponse = await _nationalHolidayService.GetNationalHolidayById(nationalHolidayId);
 
-            if (getNationalHolidaysResponse == null)
-                return NoContent();
+                if (getNationalHolidaysResponse == null)
+                    return NoContent();
 
-            return Ok(getNationalHolidaysResponse);
+                return Ok(getNationalHolidaysResponse);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro: {ex}");
+            }
         }
 
         [HttpGet]
         [Route("GetAllNationalHoliday")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<GetNationalHolidaysResponse>>> GetAllNationalHoliday()
         {
-            List<GetNationalHolidaysResponse> lstGetNationalHolidaysResponse = await _nationalHolidayService.GetAllNationalHoliday();
+            try
+            {
+                List<GetNationalHolidaysResponse> lstGetNationalHolidaysResponse = await _nationalHolidayService.GetAllNationalHoliday();
 
-            if (lstGetNationalHolidaysResponse.Count == 0)
-                return NoContent();
+                if (lstGetNationalHolidaysResponse.Count == 0)
+                    return NoContent();
 
-            return Ok(lstGetNationalHolidaysResponse);
+                return Ok(lstGetNationalHolidaysResponse);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro: {ex}");
+            }
+
         }
 
         [HttpPost]
         [Route("UpdateNationalHoliday")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateNationalHoliday([FromBody] UpdateNationalHolidayRequest updateNationalHolidayRequest)
         {
-            await _nationalHolidayService.UpdateNationalHoliday(updateNationalHolidayRequest);
+            try
+            {
+                await _nationalHolidayService.UpdateNationalHoliday(updateNationalHolidayRequest);
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro: {ex}");
+            }
         }
 
         [HttpDelete]
         [Route("DeleteNationalHoliday/{nationalHolidayId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> DeleteNationalHoliday(int nationalHolidayId)
         {
-            await _nationalHolidayService.DeleteNationalHoliday(nationalHolidayId);
+            try
+            {
+                await _nationalHolidayService.DeleteNationalHoliday(nationalHolidayId);
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro: {ex}");
+            }
         }
 
         [HttpPost]
         [Route("ResetOriginalDataHolidays")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> ResetOriginalDataHolidays()
         {
-            await _nationalHolidayService.ResetOriginalDataHolidays();
+            try
+            {
+                await _nationalHolidayService.ResetOriginalDataHolidays();
 
-            return Ok();
-        } 
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro: {ex}");
+            }
+        }
         #endregion
     }
 }
