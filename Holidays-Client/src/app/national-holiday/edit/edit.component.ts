@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NationalHoliday } from '../models/national-holiday';
 import { NationalHolidayService } from '../national-holiday.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit',
@@ -64,19 +65,19 @@ export class EditComponent implements OnInit {
     this.nationalHolidayService.updateNationalHoliday(this.nationalHoliday)
       .subscribe({
         next: () => { this.processSuccess() },
-        error: () => { this.processError() }
+        error: error => { this.processError(error) }
       });
   }
 
   processSuccess() {
-    let toast = this.toastr.success('Feriado atualizado com sucesso!', 'Sucesso!');
+    let toast = this.toastr.success('Feriado atualizado com sucesso!', 'Sucesso!', { timeOut: 2500 });
     if (toast) {
       toast.onHidden.subscribe(() => {
         this.router.navigate(['/list']);
       });
     }
   }
-  processError(){
-    this.toastr.error('Aconteceu um erro interno', 'Erro!');
+  processError(error: HttpErrorResponse){
+    this.toastr.error(error.message, 'Erro!');
   }
 }

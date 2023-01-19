@@ -1,3 +1,4 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -32,7 +33,7 @@ export class ListComponent implements OnInit {
     this.nationalHolidayService.resetNationalHoliday()
     .subscribe({
       next: () => { this.processResetSuccess() },
-      error: () => { this.processError() }
+      error: erro => { this.processError(erro) }
     });
   }
 
@@ -41,7 +42,7 @@ export class ListComponent implements OnInit {
       this.nationalHolidayService.deleteNationalHoliday(id)
       .subscribe({
         next: () => { this.processSuccess() },
-        error: () => { this.processError() }
+        error: erro => { this.processError(erro) }
       });
     }
   }
@@ -56,8 +57,8 @@ export class ListComponent implements OnInit {
     this.toastr.success('Lista resetada', 'Sucesso!');
   }
 
-  processError(){
-    this.toastr.error('Aconteceu um erro interno', 'Erro!');
+  processError(erro: HttpErrorResponse){
+    this.toastr.error(erro.message, 'Erro!');
   }
 
 }
