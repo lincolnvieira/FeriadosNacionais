@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class EditComponent implements OnInit {
   id: number;
+  isDisabled: boolean = true;
   public nationalHoliday : NationalHoliday;
 
   editNationalHolidayFormGroup: FormGroup;
@@ -25,13 +26,13 @@ export class EditComponent implements OnInit {
   
   ngOnInit(): void {
     this.editNationalHolidayFormGroup = this.formBuilder.group({
-      title: [''],
-      date: [''],
-      description: [''],
-      legislation: [''],
-      type: [''],
-      startTime: [''],
-      endTime: ['']
+      title: [{ value: '', disabled: true}],
+      date: [{ value: '', disabled: true}],
+      description: [{ value: ''}],
+      legislation: [{ value: '', disabled: true}],
+      type: [{ value: '', disabled: true}],
+      startTime: [{ value: '', disabled: true}],
+      endTime: [{ value: '', disabled: true}]
     });
 
     this.route.params.subscribe(params => {
